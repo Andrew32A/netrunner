@@ -366,6 +366,7 @@ GameObject:
   m_Component:
   - component: {fileID: 519706793}
   - component: {fileID: 519706792}
+  - component: {fileID: 519706794}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -407,6 +408,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519706794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519706791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1acf71b673b8347dfa85c994afdcaa9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSpeed: 7
+  sprintSpeed: 14
+  groundDrag: 5
+  wallrunSpeed: 18
+  jumpForce: 15
+  jumpCooldown: 0.25
+  airMultiplier: 0.4
+  crouchSpeed: 3.5
+  crouchYScale: 0.5
+  jumpKey: 32
+  sprintKey: 304
+  crouchKey: 306
+  playerHeight: 2
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 512
+  maxSlopeAngle: 0
+  orientation: {fileID: 1299043448}
+  state: 0
+  sliding: 0
+  crouching: 0
+  wallrunning: 0
 --- !u!1 &661978520
 GameObject:
   m_ObjectHideFlags: 0
