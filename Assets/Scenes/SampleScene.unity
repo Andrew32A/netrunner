@@ -385,6 +385,7 @@ GameObject:
   - component: {fileID: 519706793}
   - component: {fileID: 519706792}
   - component: {fileID: 519706794}
+  - component: {fileID: 519706795}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -460,6 +461,36 @@ MonoBehaviour:
   sliding: 0
   crouching: 0
   wallrunning: 0
+--- !u!114 &519706795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519706791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56abd524a39e54dc68e562bc922a43bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsWall:
+    serializedVersion: 2
+    m_Bits: 1024
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 512
+  wallRunForce: 200
+  wallJumpUpForce: 14
+  wallJumpSideForce: 18
+  maxWallRunTime: 1.5
+  jumpKey: 32
+  wallCheckDistance: 0.7
+  minJumpHeight: 2
+  exitWallTime: 0.2
+  useGravity: 1
+  gravityCounterForce: 40
+  orientation: {fileID: 1299043448}
+  cam: {fileID: 330585548}
 --- !u!1 &661978520
 GameObject:
   m_ObjectHideFlags: 0
