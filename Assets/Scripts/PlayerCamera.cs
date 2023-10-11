@@ -13,6 +13,9 @@ public class PlayerCamera : MonoBehaviour
 
     private float xRotation;
     private float yRotation;
+
+    private Coroutine tiltCoroutine;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -43,7 +46,14 @@ public class PlayerCamera : MonoBehaviour
 
     public void DoTilt(float zTilt, float duration)
     {
-        StartCoroutine(SmoothlyLerpTilt(transform.rotation.eulerAngles.z, zTilt, duration));
+        // check to see if there's already a tilt coroutine running
+        if (tiltCoroutine != null)
+        {
+            StopCoroutine(tiltCoroutine);
+        }
+
+        // start a new tilt coroutine and keep track of it
+        tiltCoroutine = StartCoroutine(SmoothlyLerpTilt(transform.rotation.eulerAngles.z, zTilt, duration));
     }
 
     private IEnumerator SmoothlyLerpFOV(float startValue, float endValue, float duration)
