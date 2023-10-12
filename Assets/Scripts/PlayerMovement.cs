@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     public float crouchYScale;
     private float startYScale;
 
-    [Header("Keybinds")]
+    [Header("Input Options")]
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode sprintKey = KeyCode.LeftShift;
     public KeyCode crouchKey = KeyCode.LeftControl;
@@ -42,7 +42,6 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("References")]
     public Transform orientation;
-
     private float horizontalInput;
     private float verticalInput;
     private Vector3 moveDirection;
