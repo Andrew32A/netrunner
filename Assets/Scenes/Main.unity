@@ -967,6 +967,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraPosition: {fileID: 661978521}
+  enableCameraBobbing: 1
+  walkBobbingSpeed: 14
+  walkBobbingAmount: 0.05
+  runBobbingSpeed: 24
+  runBobbingAmount: 0.1
 --- !u!1001 &1205063430
 PrefabInstance:
   m_ObjectHideFlags: 0
