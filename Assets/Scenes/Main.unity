@@ -526,6 +526,7 @@ MonoBehaviour:
   jumpKey: 32
   sprintKey: 304
   crouchKey: 306
+  holdToSprint: 0
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2

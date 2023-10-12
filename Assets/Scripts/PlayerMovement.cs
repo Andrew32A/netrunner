@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float sprintSpeed; // default: 14f
     public float groundDrag;
     public float wallrunSpeed;
+    private bool isSprinting = false;
 
     [Header("Jumping")]
     public float jumpForce;
@@ -26,11 +27,13 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode sprintKey = KeyCode.LeftShift;
     public KeyCode crouchKey = KeyCode.LeftControl;
+    public bool holdToSprint;
 
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
     private bool isGrounded;
+    private bool isCrouching;
 
     [Header("Slope Handling")]
     public float maxSlopeAngle;
@@ -103,6 +106,18 @@ public class PlayerMovement : MonoBehaviour
 
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
+        // toggle sprinting when moving forward
+        if (!holdToSprint && verticalInput > 0 && Input.GetKeyDown(sprintKey))
+        {
+            isSprinting = !isSprinting;
+        }
+
+        // stop sprinting when player stops moving forward or when player speed is 8 or less
+        if (verticalInput <= 0 || rb.velocity.magnitude <= 6f)
+        {
+            isSprinting = false;
+        }
+
         // jump
         if (Input.GetKeyDown(jumpKey) && readyToJump && isGrounded)
         {
@@ -116,6 +131,7 @@ public class PlayerMovement : MonoBehaviour
         // crouch
         if (Input.GetKeyDown(crouchKey))
         {
+            isCrouching = true;
             transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
             rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
         }
@@ -123,6 +139,7 @@ public class PlayerMovement : MonoBehaviour
         // stop crouching
         if (Input.GetKeyUp(crouchKey))
         {
+            isCrouching = false;
             transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
         }
     }
@@ -136,8 +153,15 @@ public class PlayerMovement : MonoBehaviour
             moveSpeed = crouchSpeed;
         }
 
-        // mode - sprinting
-        if (isGrounded && Input.GetKey(sprintKey))
+        // mode - sprinting w/ hold to sprint
+        if (isGrounded && Input.GetKey(sprintKey) && !isCrouching && holdToSprint)
+        {
+            state = MovementState.sprinting;
+            moveSpeed = sprintSpeed;
+        }
+
+        // mode - toggled sprinting w/o hold to sprint
+        else if (isGrounded && isSprinting && !isCrouching)
         {
             state = MovementState.sprinting;
             moveSpeed = sprintSpeed;
