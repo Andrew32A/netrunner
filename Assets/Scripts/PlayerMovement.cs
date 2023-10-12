@@ -112,8 +112,8 @@ public class PlayerMovement : MonoBehaviour
             isSprinting = !isSprinting;
         }
 
-        // stop sprinting when player stops moving forward or when player speed is 8 or less
-        if (verticalInput <= 0 || rb.velocity.magnitude <= 6f)
+        // stop sprinting when player stops moving forward or when player speed is less than walk speed
+        if (verticalInput <= 0 || rb.velocity.magnitude <= (walkSpeed - 2f))
         {
             isSprinting = false;
         }
