@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pistol : MonoBehaviour
 {
-    [Header("Attributes")]
+    [Header("Range")]
     public float raycastRange; // default: 100f
 
     [Header("Ammo")]
