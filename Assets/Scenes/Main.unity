@@ -1926,8 +1926,9 @@ MonoBehaviour:
   returnSpeed: 40
   slideZDistance: -0.2
   sideTurnDuration: 0.05
-  horizontalSpinDuration: 0.2
-  verticalSpinDuration: 0.2
+  horizontalSpinDuration: 0.5
+  verticalSpinDuration: 0.25
+  step3TransitionDuration: 0.1
   shootPoint: {fileID: 1663681074}
   slideTransform: {fileID: 1385089961}
 --- !u!1 &1221190709

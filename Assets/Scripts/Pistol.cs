@@ -24,7 +24,8 @@ public class Pistol : MonoBehaviour
     [Header("Gun Slinger Animation")]
     public float sideTurnDuration; // default: 0.05f
     public float horizontalSpinDuration; // default: 0.2f
-    public float verticalSpinDuration; // default: 0.2f
+    public float verticalSpinDuration; // default: 0.25f
+    public float step3TransitionDuration; // default 0.1f
     private bool isAnimatingGunSlinger = false;
 
     [Header("References")]
@@ -152,7 +153,7 @@ public class Pistol : MonoBehaviour
     {
         isAnimatingGunSlinger = true;
 
-        // 1. rotate the pistol's z-axis to 90 degrees.
+        // 1. rotate the pistol's z-axis to 90 degrees
         Quaternion sideRotation = Quaternion.Euler(originalRotation.x, originalRotation.y, originalRotation.z + 90);
         float startTime = Time.time;
         while (Time.time < startTime + sideTurnDuration)
@@ -161,23 +162,25 @@ public class Pistol : MonoBehaviour
             yield return null;
         }
 
-        // 2. spin the pistol horizontally
+        // 2. spin the pistol horizontally twice
         startTime = Time.time;
         while (Time.time < startTime + horizontalSpinDuration)
         {
-            transform.Rotate(360f / horizontalSpinDuration * Time.deltaTime, 0, 0);
+            transform.Rotate(720f / horizontalSpinDuration * Time.deltaTime, 0, 0);
             yield return null;
         }
 
-        // 3. rotate the pistol's z-axis back to 0.
+        // 3. rotate the pistol's z-axis back to 0
+        Quaternion endRotationOfStep3 = Quaternion.Euler(originalRotation);
         startTime = Time.time;
-        while (Time.time < startTime + sideTurnDuration)
+        while (Time.time < startTime + step3TransitionDuration)
         {
-            transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(originalRotation), (Time.time - startTime) / sideTurnDuration);
+            float t = (Time.time - startTime) / step3TransitionDuration;
+            transform.localRotation = Quaternion.Lerp(sideRotation, endRotationOfStep3, t);
             yield return null;
         }
 
-        // 4. spin the pistol vertically.
+        // 4. spin the pistol vertically
         startTime = Time.time;
         while (Time.time < startTime + verticalSpinDuration)
         {
@@ -185,7 +188,7 @@ public class Pistol : MonoBehaviour
             yield return null;
         }
 
-        // reset the pistol's rotation to the original position.
+        // reset the pistol's rotation to the original position
         transform.localRotation = Quaternion.Euler(originalRotation);
 
         isAnimatingGunSlinger = false;
