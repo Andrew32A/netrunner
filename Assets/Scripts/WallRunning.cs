@@ -7,33 +7,33 @@ public class WallRunning : MonoBehaviour
     [Header("Wall Running")]
     public LayerMask whatIsWall;
     public LayerMask whatIsGround;
-    public float wallRunForce;
-    public float wallJumpUpForce;
-    public float wallJumpSideForce;
-    public float maxWallRunTime;
+    public float wallRunForce; // default: 200f
+    public float wallJumpUpForce; // default: 14f
+    public float wallJumpSideForce; // default: 18f
+    public float maxWallRunTime; // default: 1.5f
     private float wallRunTimer;
 
     [Header("Input")]
     private float horizontalInput;
     private float verticalInput;
-    public KeyCode jumpKey = KeyCode.Space;
+    public KeyCode jumpKey = KeyCode.Space; // default: KeyCode.Space
 
     [Header("Detection")]
-    public float wallCheckDistance;
-    public float minJumpHeight;
+    public float wallCheckDistance; // default: 0.7f
+    public float minJumpHeight; // default: 2f
     private RaycastHit leftWallhit;
     private RaycastHit rightWallhit;
     private bool wallLeft;
     private bool wallRight;
 
     [Header("Exiting")]
+    public float exitWallTime; // default: 0.2f
     private bool exitingWall;
-    public float exitWallTime;
     private float exitWallTimer;
 
     [Header("Gravity")]
-    public bool useGravity;
-    public float gravityCounterForce;
+    public bool useGravity; // default: true
+    public float gravityCounterForce; // default: 40f
 
     [Header("References")]
     public Transform orientation;

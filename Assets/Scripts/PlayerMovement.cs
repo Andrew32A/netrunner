@@ -13,32 +13,32 @@ public class PlayerMovement : MonoBehaviour
     public bool isSprinting = false;
 
     [Header("Jumping")]
-    public float jumpForce;
-    public float jumpCooldown;
-    public float airMultiplier;
+    public float jumpForce; // default: 15f
+    public float jumpCooldown; // default: 0.25f
+    public float airMultiplier; // default: 0.4f
     private bool readyToJump;
     public bool canDoubleJump;
     public bool hasDoubleJumped = false;
 
     [Header("Crouching")]
-    public float crouchSpeed;
-    public float crouchYScale;
+    public float crouchSpeed; // default: 3.5f
+    public float crouchYScale; // default: 0.5f
     private float startYScale;
 
     [Header("Input Options")]
-    public KeyCode jumpKey = KeyCode.Space;
-    public KeyCode sprintKey = KeyCode.LeftShift;
-    public KeyCode crouchKey = KeyCode.LeftControl;
+    public KeyCode jumpKey = KeyCode.Space; // default: KeyCode.Space
+    public KeyCode sprintKey = KeyCode.LeftShift; // default: KeyCode.LeftShift
+    public KeyCode crouchKey = KeyCode.LeftControl; // default: KeyCode.LeftControl
     public bool holdToSprint;
 
     [Header("Ground Check")]
-    public float playerHeight;
+    public float playerHeight; // default: 2f
     public LayerMask whatIsGround;
     private bool isGrounded;
     private bool isCrouching;
 
     [Header("Slope Handling")]
-    public float maxSlopeAngle;
+    public float maxSlopeAngle; // default: 0f
     private RaycastHit slopeHit;
     private bool exitingSlope;
 
@@ -134,7 +134,7 @@ public class PlayerMovement : MonoBehaviour
                 Jump();
             }
 
-            // be able to continuously jump if button is held
+            // reset jump
             Invoke(nameof(ResetJump), jumpCooldown);
         }
         else if (canDoubleJump)
@@ -149,7 +149,7 @@ public class PlayerMovement : MonoBehaviour
                 readyToJump = false;
                 Jump();
 
-                // be able to continuously jump if button is held
+                // reset jump
                 Invoke(nameof(ResetJump), jumpCooldown);
             }
         }
