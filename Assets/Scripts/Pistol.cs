@@ -1,11 +1,12 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+
 
 public class Pistol : MonoBehaviour
 {
-    public GameObject bulletPrefab;
     public Transform shootPoint;
-    public float bulletForce = 20f;
+    public float raycastRange = 100f;
     public int maxAmmo = 7;
     private int currentAmmo;
     public int reserveAmmo = 7;
@@ -34,9 +35,20 @@ public class Pistol : MonoBehaviour
 
     void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
-        Rigidbody rb = bullet.GetComponent<Rigidbody>();
-        rb.AddForce(shootPoint.forward * bulletForce, ForceMode.Impulse);
+        RaycastHit hit;
+        if (Physics.Raycast(shootPoint.position, shootPoint.forward, out hit, raycastRange))
+        {
+            if (hit.transform.CompareTag("Enemy"))
+            {
+                // check to see what we hit
+                Debug.Log("Hit enemy: " + hit.transform.name);
+
+                // destroy enemy
+                Destroy(hit.transform.gameObject);
+
+                // TODO: instead of destroying enemy, call enemy death function once it's implemented
+            }
+        }
         currentAmmo--;
     }
 
