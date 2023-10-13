@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpCooldown;
     public float airMultiplier;
     private bool readyToJump;
+    public bool hasDoubleJumped = false;
 
     [Header("Crouching")]
     public float crouchSpeed;
@@ -81,6 +82,12 @@ public class PlayerMovement : MonoBehaviour
         SpeedControl();
         StateHandler();
 
+        // reset double jump when player lands or wallruns
+        if (isGrounded || wallrunning)
+        {
+            hasDoubleJumped = false;
+        }
+
         // handle drag
         if (isGrounded)
         {
@@ -118,8 +125,12 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // jump
-        if (Input.GetKeyDown(jumpKey) && readyToJump && isGrounded)
+        if (Input.GetKeyDown(jumpKey) && readyToJump && (isGrounded || (!hasDoubleJumped && !isGrounded)) && !wallrunning)
         {
+            if (!isGrounded)
+            {
+                hasDoubleJumped = true; // player used their double jump
+            }
             readyToJump = false;
             Jump();
 
