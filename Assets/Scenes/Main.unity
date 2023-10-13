@@ -1632,12 +1632,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6016563c4731142fe8af4f718d31ee0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootPoint: {fileID: 1663681074}
   raycastRange: 100
-  maxAmmo: 7
+  currentAmmo: 0
   reserveAmmo: 999999
+  maxAmmo: 7
   kickbackAmount: 25
   returnSpeed: 40
+  slideZDistance: -0.2
+  shootPoint: {fileID: 1663681074}
+  slideTransform: {fileID: 1385089961}
 --- !u!1 &1221190709
 GameObject:
   m_ObjectHideFlags: 0
@@ -1775,6 +1778,12 @@ Transform:
   m_Father: {fileID: 519706793}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1385089961 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3809222280668562654, guid: 726cd21416e138640a4f2575ffe04009,
+    type: 3}
+  m_PrefabInstance: {fileID: 1205063430}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1419479389
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,21 +4,31 @@ using UnityEngine;
 
 public class Pistol : MonoBehaviour
 {
-    public Transform shootPoint;
-    public float raycastRange = 100f;
-    public int maxAmmo = 7;
-    private int currentAmmo;
-    public int reserveAmmo = 7;
+    [Header("Attributes")]
+    public float raycastRange; // default: 100f
+    public int currentAmmo;
+    public int reserveAmmo; // default: 7 or 999999
+    public int maxAmmo; // default: 7
     private bool isReloading = false;
 
-    public float kickbackAmount;
-    public float returnSpeed;
+    [Header("Recoil")]
+    public float kickbackAmount; // default: 25f
+    public float returnSpeed; // default: 40f
+    public float slideZDistance; // default: -0.2f
+
+    [Header("References")]
+    public Transform shootPoint;
+    public Transform slideTransform;
     private Vector3 originalRotation;
+    private Vector3 originalSlidePosition;
 
     void Start()
     {
         currentAmmo = maxAmmo;
+
+        // store original pistol rotation and slide position
         originalRotation = transform.localEulerAngles;
+        originalSlidePosition = slideTransform.localPosition;
     }
 
     void Update()
@@ -30,6 +40,7 @@ public class Pistol : MonoBehaviour
         {
             Shoot();
             Kickback();
+            MoveSlide();
         }
 
         if (Input.GetKeyDown(KeyCode.R) && currentAmmo < maxAmmo && reserveAmmo > 0)
@@ -37,7 +48,11 @@ public class Pistol : MonoBehaviour
             StartCoroutine(Reload());
         }
 
+        // slowly return pistol to original rotation
         transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(originalRotation), returnSpeed * Time.deltaTime);
+
+        // slowly return slide to original position
+        slideTransform.localPosition = Vector3.Lerp(slideTransform.localPosition, originalSlidePosition, returnSpeed * Time.deltaTime);
     }
 
     void Shoot()
@@ -62,6 +77,11 @@ public class Pistol : MonoBehaviour
     void Kickback()
     {
         transform.localRotation = Quaternion.Euler(originalRotation.x - kickbackAmount, originalRotation.y, originalRotation.z);
+    }
+
+    void MoveSlide()
+    {
+        slideTransform.localPosition += new Vector3(0, 0, slideZDistance);
     }
 
     IEnumerator Reload()
