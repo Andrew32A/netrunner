@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class Pistol : MonoBehaviour
 {
     public Transform shootPoint;
@@ -12,9 +11,14 @@ public class Pistol : MonoBehaviour
     public int reserveAmmo = 7;
     private bool isReloading = false;
 
+    private float kickbackAmount = 5f;
+    private float returnSpeed = 1.5f;
+    private Vector3 originalRotation;
+
     void Start()
     {
         currentAmmo = maxAmmo;
+        originalRotation = transform.localEulerAngles;
     }
 
     void Update()
@@ -25,12 +29,15 @@ public class Pistol : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && currentAmmo > 0)
         {
             Shoot();
+            Kickback();
         }
 
         if (Input.GetKeyDown(KeyCode.R) && currentAmmo < maxAmmo && reserveAmmo > 0)
         {
             StartCoroutine(Reload());
         }
+
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(originalRotation), returnSpeed * Time.deltaTime);
     }
 
     void Shoot()
@@ -40,7 +47,7 @@ public class Pistol : MonoBehaviour
         {
             if (hit.transform.CompareTag("Enemy"))
             {
-                // check to see what we hit
+                // check to see what enemy we hit
                 Debug.Log("Hit enemy: " + hit.transform.name);
 
                 // destroy enemy
@@ -50,6 +57,11 @@ public class Pistol : MonoBehaviour
             }
         }
         currentAmmo--;
+    }
+
+    void Kickback()
+    {
+        transform.localRotation = Quaternion.Euler(originalRotation.x - kickbackAmount, originalRotation.y, originalRotation.z);
     }
 
     IEnumerator Reload()
@@ -66,7 +78,7 @@ public class Pistol : MonoBehaviour
             yield return null;
         }
 
-        transform.localRotation = Quaternion.identity;
+        transform.localRotation = Quaternion.Euler(originalRotation);
 
         int ammoNeeded = maxAmmo - currentAmmo;
         if (reserveAmmo < ammoNeeded)
