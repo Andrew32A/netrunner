@@ -6,9 +6,14 @@ public class Pistol : MonoBehaviour
 {
     [Header("Attributes")]
     public float raycastRange; // default: 100f
+
+    [Header("Ammo")]
     public int currentAmmo;
     public int reserveAmmo; // default: 7 or 999999
     public int maxAmmo; // default: 7
+
+    [Header("Reload")]
+    public float reloadTime = 0.4f; // default: 0.4f
     private bool isReloading = false;
 
     [Header("Recoil")]
@@ -101,9 +106,8 @@ public class Pistol : MonoBehaviour
     IEnumerator Reload()
     {
         isReloading = true;
-        float reloadTime = 0.2f;
         float elapsedTime = 0;
-        float spinSpeed = 360f / reloadTime;
+        float spinSpeed = 720f / reloadTime; // spins for 2 rotations
 
         while (elapsedTime < reloadTime)
         {
@@ -129,3 +133,12 @@ public class Pistol : MonoBehaviour
         isReloading = false;
     }
 }
+
+// *********************************************************************************************************************
+// Code that was removed but may be useful later for upgrades:
+
+// auto reload when out of ammo
+// if (Input.GetButtonDown("Fire1") && currentAmmo == 0 && reserveAmmo > 0)
+// {
+//     StartCoroutine(Reload());
+// }

@@ -1636,6 +1636,7 @@ MonoBehaviour:
   currentAmmo: 0
   reserveAmmo: 999999
   maxAmmo: 7
+  reloadTime: 0.4
   kickbackAmount: 25
   returnSpeed: 40
   slideZDistance: -0.2
