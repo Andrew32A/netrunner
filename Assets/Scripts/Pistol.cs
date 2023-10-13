@@ -11,8 +11,8 @@ public class Pistol : MonoBehaviour
     public int reserveAmmo = 7;
     private bool isReloading = false;
 
-    private float kickbackAmount = 5f;
-    private float returnSpeed = 1.5f;
+    public float kickbackAmount;
+    public float returnSpeed;
     private Vector3 originalRotation;
 
     void Start()

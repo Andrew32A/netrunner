@@ -1636,6 +1636,8 @@ MonoBehaviour:
   raycastRange: 100
   maxAmmo: 7
   reserveAmmo: 999999
+  kickbackAmount: 25
+  returnSpeed: 40
 --- !u!1 &1221190709
 GameObject:
   m_ObjectHideFlags: 0
