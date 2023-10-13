@@ -22,9 +22,9 @@ public class Pistol : MonoBehaviour
     public float slideZDistance; // default: -0.2f
 
     [Header("Gun Slinger Animation")]
-    public float sideTurnDuration = 0.25f;
-    public float horizontalSpinDuration = 0.5f;
-    public float verticalSpinDuration = 0.5f;
+    public float sideTurnDuration; // default: 0.05f
+    public float horizontalSpinDuration; // default: 0.2f
+    public float verticalSpinDuration; // default: 0.2f
     private bool isAnimatingGunSlinger = false;
 
     [Header("References")]
@@ -51,15 +51,21 @@ public class Pistol : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") && currentAmmo > 0)
         {
-            StartCoroutine(GunSlingerTrick());
-            // Shoot();
-            // Kickback();
-            // MoveSlide();
+            Shoot();
+            Kickback();
+            MoveSlide();
         }
 
+        // reload if pistol ammo is not full and reserve ammo is available
         if (Input.GetKeyDown(KeyCode.R) && currentAmmo < maxAmmo && reserveAmmo > 0)
         {
             StartCoroutine(Reload());
+        }
+
+        // play gun slinger animation if pistol ammo is full
+        if (Input.GetKeyDown(KeyCode.R) && currentAmmo == maxAmmo)
+        {
+            StartCoroutine(GunSlingerTrick());
         }
 
         // slowly return pistol to original rotation
