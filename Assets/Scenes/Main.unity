@@ -597,6 +597,7 @@ MonoBehaviour:
   sprintSpeed: 14
   groundDrag: 5
   wallrunSpeed: 18
+  isSprinting: 0
   jumpForce: 15
   jumpCooldown: 0.25
   airMultiplier: 0.4
@@ -966,12 +967,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34f682866a07a41ada5a8c2b586538e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraPosition: {fileID: 661978521}
   enableCameraBobbing: 1
   walkBobbingSpeed: 14
   walkBobbingAmount: 0.05
   runBobbingSpeed: 24
   runBobbingAmount: 0.1
+  weaponWalkBobbingMultiplier: 0.5
+  weaponRunBobbingMultiplier: 0.2
+  cameraPosition: {fileID: 661978521}
+  weaponCamera: {fileID: 54439556}
+  playerMovementScript: {fileID: 519706794}
 --- !u!1001 &1205063430
 PrefabInstance:
   m_ObjectHideFlags: 0

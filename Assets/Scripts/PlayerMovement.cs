@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float sprintSpeed; // default: 14f
     public float groundDrag;
     public float wallrunSpeed;
-    private bool isSprinting = false;
+    public bool isSprinting = false;
 
     [Header("Jumping")]
     public float jumpForce;
