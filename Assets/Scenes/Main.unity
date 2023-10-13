@@ -470,7 +470,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0, g: 1, b: 0.7922032, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.9764706, a: 1}
   m_Intensity: 2
   m_Range: 10
   m_SpotAngle: 30
@@ -1925,6 +1925,9 @@ MonoBehaviour:
   kickbackAmount: 25
   returnSpeed: 40
   slideZDistance: -0.2
+  sideTurnDuration: 0.1
+  horizontalSpinDuration: 0.2
+  verticalSpinDuration: 0.2
   shootPoint: {fileID: 1663681074}
   slideTransform: {fileID: 1385089961}
 --- !u!1 &1221190709
