@@ -51,9 +51,18 @@ public class Pistol : MonoBehaviour
         // slowly return pistol to original rotation
         transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(originalRotation), returnSpeed * Time.deltaTime);
 
-        // slowly return slide to original position
-        slideTransform.localPosition = Vector3.Lerp(slideTransform.localPosition, originalSlidePosition, returnSpeed * Time.deltaTime);
+        // Check ammo count to decide slide position
+        if (currentAmmo == 0)
+        {
+            LockSlideBack();
+        }
+        else
+        {
+            // slowly return slide to original position
+            slideTransform.localPosition = Vector3.Lerp(slideTransform.localPosition, originalSlidePosition, returnSpeed * Time.deltaTime);
+        }
     }
+
 
     void Shoot()
     {
@@ -82,6 +91,11 @@ public class Pistol : MonoBehaviour
     void MoveSlide()
     {
         slideTransform.localPosition += new Vector3(0, 0, slideZDistance);
+    }
+
+    void LockSlideBack()
+    {
+        slideTransform.localPosition = new Vector3(originalSlidePosition.x, originalSlidePosition.y, originalSlidePosition.z + slideZDistance);
     }
 
     IEnumerator Reload()
