@@ -14,6 +14,9 @@ public class PistolPickup : MonoBehaviour
     public GameObject playerPistol;
     private Vector3 initialPosition;
 
+    [Header("Music")]
+    public GameObject battleMusic;
+
     private void Start()
     {
         initialPosition = transform.position;
@@ -40,6 +43,10 @@ public class PistolPickup : MonoBehaviour
             {
                 if (playerPistol)
                 {
+                    // set battle music to active
+                    battleMusic.SetActive(true);
+
+                    // enable player pistol
                     playerPistol.SetActive(true);
                     Destroy(gameObject);
                 }
