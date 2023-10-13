@@ -10,7 +10,7 @@ public class PistolPickup : MonoBehaviour
     public float floatFrequency; // default: 1.0f
 
     [Header("Pickup Parameters")]
-    public float pickupRadius; // default: 2.0f
+    public float pickupRadius; // default: 1.0f
     public GameObject playerPistol;
     private Vector3 initialPosition;
 
