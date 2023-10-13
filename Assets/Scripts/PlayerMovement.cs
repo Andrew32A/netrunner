@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpCooldown;
     public float airMultiplier;
     private bool readyToJump;
+    public bool canDoubleJump;
     public bool hasDoubleJumped = false;
 
     [Header("Crouching")]
@@ -125,17 +126,32 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // jump
-        if (Input.GetKeyDown(jumpKey) && readyToJump && (isGrounded || (!hasDoubleJumped && !isGrounded)) && !wallrunning)
+        if (!canDoubleJump)
         {
-            if (!isGrounded)
+            if (Input.GetKeyDown(jumpKey) && readyToJump && isGrounded)
             {
-                hasDoubleJumped = true; // player used their double jump
+                readyToJump = false;
+                Jump();
             }
-            readyToJump = false;
-            Jump();
 
             // be able to continuously jump if button is held
             Invoke(nameof(ResetJump), jumpCooldown);
+        }
+        else if (canDoubleJump)
+        {
+
+            if (Input.GetKeyDown(jumpKey) && readyToJump && (isGrounded || (!hasDoubleJumped && !isGrounded)) && !wallrunning)
+            {
+                if (!isGrounded)
+                {
+                    hasDoubleJumped = true; // player used their double jump
+                }
+                readyToJump = false;
+                Jump();
+
+                // be able to continuously jump if button is held
+                Invoke(nameof(ResetJump), jumpCooldown);
+            }
         }
 
         // crouch
