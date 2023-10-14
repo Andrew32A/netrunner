@@ -1437,7 +1437,7 @@ PrefabInstance:
     - target: {fileID: 8029750907457127485, guid: 9965c133baf9747609da45dee9ded553,
         type: 3}
       propertyPath: m_Name
-      value: Hallway (1x4)
+      value: Hallway (4x1)
       objectReference: {fileID: 0}
     - target: {fileID: 8029750907457127486, guid: 9965c133baf9747609da45dee9ded553,
         type: 3}
@@ -1452,7 +1452,7 @@ PrefabInstance:
     - target: {fileID: 8029750907457127486, guid: 9965c133baf9747609da45dee9ded553,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00000047683716
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8029750907457127486, guid: 9965c133baf9747609da45dee9ded553,
         type: 3}
@@ -2223,7 +2223,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 456548, guid: 5b3cc55650f95e34797ed0af9c57110a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.004028812
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 456548, guid: 5b3cc55650f95e34797ed0af9c57110a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3160,7 +3160,7 @@ PrefabInstance:
     - target: {fileID: 8029750907457127485, guid: 9965c133baf9747609da45dee9ded553,
         type: 3}
       propertyPath: m_Name
-      value: Hallway (1x4)
+      value: Hallway (4x1)
       objectReference: {fileID: 0}
     - target: {fileID: 8029750907457127486, guid: 9965c133baf9747609da45dee9ded553,
         type: 3}
@@ -3226,11 +3226,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8298170340910892321, guid: abb065e0e9f0345e2bfe5ecc3118c69d,
-        type: 3}
-      propertyPath: m_Name
-      value: Stairs (1x1) (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 8959347147471310125, guid: abb065e0e9f0345e2bfe5ecc3118c69d,
         type: 3}
       propertyPath: m_RootOrder
@@ -3239,17 +3234,17 @@ PrefabInstance:
     - target: {fileID: 8959347147471310125, guid: abb065e0e9f0345e2bfe5ecc3118c69d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 60.444275
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8959347147471310125, guid: abb065e0e9f0345e2bfe5ecc3118c69d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.14089526
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8959347147471310125, guid: abb065e0e9f0345e2bfe5ecc3118c69d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 80.65311
+      value: 75.4
       objectReference: {fileID: 0}
     - target: {fileID: 8959347147471310125, guid: abb065e0e9f0345e2bfe5ecc3118c69d,
         type: 3}
@@ -3290,11 +3285,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stairs (1x2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8959347148693031663, guid: abb065e0e9f0345e2bfe5ecc3118c69d,
-        type: 3}
-      propertyPath: m_Name
-      value: Stairs (1x1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abb065e0e9f0345e2bfe5ecc3118c69d, type: 3}
