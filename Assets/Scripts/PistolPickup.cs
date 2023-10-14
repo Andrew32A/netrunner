@@ -14,8 +14,9 @@ public class PistolPickup : MonoBehaviour
     public GameObject playerPistol;
     private Vector3 initialPosition;
 
-    [Header("Music")]
+    [Header("References")]
     public GameObject battleMusic;
+    public GameObject reticle;
 
     private void Start()
     {
@@ -45,6 +46,9 @@ public class PistolPickup : MonoBehaviour
                 {
                     // set battle music to active
                     battleMusic.SetActive(true);
+
+                    // set reticle to active
+                    reticle.SetActive(true);
 
                     // enable player pistol
                     playerPistol.SetActive(true);
