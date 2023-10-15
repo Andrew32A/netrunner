@@ -25,8 +25,8 @@ public class DisplayTextTrigger : MonoBehaviour
     public List<KeyCode> dismissKeys = new List<KeyCode>();
 
     [Header("Text Delay")]
-    public float bigTextDisplayTime; // default: 0.4f - time before the big text is hidden
-    public float bigTextDelay; // default: 0.2f - delay between each of the big text messages
+    public float bigTextDisplayTime; // default: 0.2f - time before the big text is hidden
+    public float bigTextDelay; // default: 0.1f - delay between each of the big text messages
     public float smallTextDismissDelay; // default: 1f - time before the small text is hidden after dismissing
 
     private AudioSource audioSource;
