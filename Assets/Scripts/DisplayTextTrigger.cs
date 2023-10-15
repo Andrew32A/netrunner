@@ -126,12 +126,12 @@ public class DisplayTextTrigger : MonoBehaviour
 
     private void HideTutorialText()
     {
-        if (tutorialText) tutorialText.gameObject.SetActive(false);
+        if (tutorialText) tutorialText.text = "";
     }
 
     private void HideBigText()
     {
-        if (bigText) bigText.gameObject.SetActive(false);
+        if (bigText) bigText.text = "";
     }
 
     private void HideTutorialTextAfterDelay(float delay)
