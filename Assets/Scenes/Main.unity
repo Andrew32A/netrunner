@@ -3893,7 +3893,7 @@ PrefabInstance:
     - target: {fileID: 9100948321826060351, guid: e7f6d0832a2bb40f88d712fe99cebba5,
         type: 3}
       propertyPath: bigTextDelay
-      value: 0.4
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 9100948321826060351, guid: e7f6d0832a2bb40f88d712fe99cebba5,
         type: 3}
@@ -3907,8 +3907,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9100948321826060351, guid: e7f6d0832a2bb40f88d712fe99cebba5,
         type: 3}
+      propertyPath: bigTextDisplayTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9100948321826060351, guid: e7f6d0832a2bb40f88d712fe99cebba5,
+        type: 3}
       propertyPath: displayTutorialText
       value: shoot with LEFT CLICK, reload with R
+      objectReference: {fileID: 0}
+    - target: {fileID: 9100948321826060351, guid: e7f6d0832a2bb40f88d712fe99cebba5,
+        type: 3}
+      propertyPath: smallTextDismissDelay
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9100948321826060351, guid: e7f6d0832a2bb40f88d712fe99cebba5,
         type: 3}

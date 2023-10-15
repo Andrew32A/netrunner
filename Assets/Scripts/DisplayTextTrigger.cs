@@ -25,9 +25,9 @@ public class DisplayTextTrigger : MonoBehaviour
     public List<KeyCode> dismissKeys = new List<KeyCode>();
 
     [Header("Text Delay")]
-    public float bigTextDelay; // default: 1f - time before the big text is hidden
-    public float bigTextInterval; // default: 0.2f - delay between each of the big text messages
-    public float smallTextDelay; // default: 1f - time before the small text is hidden
+    public float bigTextDisplayTime; // default: 0.4f - time before the big text is hidden
+    public float bigTextDelay; // default: 0.2f - delay between each of the big text messages
+    public float smallTextDismissDelay; // default: 1f - time before the small text is hidden after dismissing
 
     private AudioSource audioSource;
     private bool canDismissTutorial = false;
@@ -56,7 +56,7 @@ public class DisplayTextTrigger : MonoBehaviour
             {
                 if (Input.GetKeyDown(key))
                 {
-                    HideTutorialTextAfterDelay(2.0f);
+                    HideTutorialTextAfterDelay(smallTextDismissDelay);
                     canDismissTutorial = false;
                     break;
                 }
@@ -68,7 +68,6 @@ public class DisplayTextTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            ShowTutorialText(displayTutorialText);
             if (displayBigTexts.Count > 0)
                 ShowNextBigText();
 
@@ -80,7 +79,7 @@ public class DisplayTextTrigger : MonoBehaviour
         }
     }
 
-    public void ShowTutorialText(string message)
+    public void DisplayTutorialText(string message)
     {
         if (tutorialText)
         {
@@ -90,12 +89,21 @@ public class DisplayTextTrigger : MonoBehaviour
         }
     }
 
+    public void ShowTutorialText()
+    {
+        DisplayTutorialText(displayTutorialText);
+    }
+
     public void ShowNextBigText()
     {
         if (currentBigTextIndex < displayBigTexts.Count)
         {
             ShowBigText(displayBigTexts[currentBigTextIndex]);
             currentBigTextIndex++;
+        }
+        {
+            // display tutorial text 2 seconds after all big texts have been shown
+            Invoke(nameof(ShowTutorialText), 2.0f);
         }
     }
 
@@ -106,14 +114,14 @@ public class DisplayTextTrigger : MonoBehaviour
             bigText.text = message;
             bigText.gameObject.SetActive(true);
             audioSource.Play();
-            Invoke(nameof(HideBigTextAndQueueNext), bigTextDelay);
+            Invoke(nameof(HideBigTextAndQueueNext), bigTextDisplayTime);
         }
     }
 
     private void HideBigTextAndQueueNext()
     {
         HideBigText();
-        Invoke(nameof(ShowNextBigText), bigTextInterval);
+        Invoke(nameof(ShowNextBigText), bigTextDelay);
     }
 
     private void HideTutorialText()
