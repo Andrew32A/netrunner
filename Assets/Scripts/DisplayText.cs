@@ -5,6 +5,10 @@ using UnityEngine.Audio;
 
 public class DisplayText : MonoBehaviour
 {
+    [Header("Text")]
+    public string displayTutorialText = "testing 1 2 3";
+    public string displayBigText = "testing big";
+
     [Header("Text References")]
     public string tutorialTextName = "TutorialText";
     public string bigTextName = "BigText";
@@ -16,10 +20,11 @@ public class DisplayText : MonoBehaviour
     public AudioMixerGroup outputMixer;
 
     [Header("Button Dismiss")]
-    public List<string> dismissButtons = new List<string>();
+    public List<KeyCode> dismissKeys = new List<KeyCode>();
 
-    [Header("Big Text Delay")]
+    [Header("Text Delay")]
     public float bigTextDelay = 1.5f;
+    public float smallTextDelay = 1.0f;
 
     private AudioSource audioSource;
     private bool canDismissTutorial = false;
@@ -43,9 +48,9 @@ public class DisplayText : MonoBehaviour
     {
         if (canDismissTutorial)
         {
-            foreach (string buttonName in dismissButtons)
+            foreach (KeyCode key in dismissKeys)
             {
-                if (Input.GetButtonDown(buttonName))
+                if (Input.GetKeyDown(key))
                 {
                     HideTutorialTextAfterDelay(2.0f);
                     canDismissTutorial = false;
@@ -59,18 +64,18 @@ public class DisplayText : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            ShowTutorialText("Insert tutorial message here");
+            ShowTutorialText(displayTutorialText);
         }
     }
 
-    public void ShowTutorialText(string message, float duration = 3.0f)
+    public void ShowTutorialText(string message)
     {
         if (tutorialText)
         {
             tutorialText.text = message;
             tutorialText.gameObject.SetActive(true);
             canDismissTutorial = true;
-            Invoke(nameof(HideTutorialText), duration);
+            // Invoke(nameof(HideTutorialText), smallTextDelay);
         }
     }
 
