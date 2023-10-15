@@ -3,13 +3,14 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class DisplayText : MonoBehaviour
+public class DisplayTextTrigger : MonoBehaviour
 {
     [Header("Text")]
     public string displayTutorialText = "testing 1 2 3";
     public string displayBigText = "testing big";
 
-    [Header("Text References")]
+    [Header("Canvas References")]
+    public string canvasName = "YourCanvasName"; // may need to change this to gameobject reference
     public string tutorialTextName = "TutorialText";
     public string bigTextName = "BigText";
     private TextMeshProUGUI tutorialText;
@@ -31,9 +32,10 @@ public class DisplayText : MonoBehaviour
 
     private void Start()
     {
-        // find TextMeshPro objects by their names
-        tutorialText = GameObject.Find(tutorialTextName)?.GetComponent<TextMeshProUGUI>();
-        bigText = GameObject.Find(bigTextName)?.GetComponent<TextMeshProUGUI>();
+        // find TextMeshPro objects from the specified canvas
+        var canvas = GameObject.Find(canvasName);
+        tutorialText = canvas?.transform.Find(tutorialTextName)?.GetComponent<TextMeshProUGUI>();
+        bigText = canvas?.transform.Find(bigTextName)?.GetComponent<TextMeshProUGUI>();
 
         if (!audioSource)
         {
@@ -65,6 +67,7 @@ public class DisplayText : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             ShowTutorialText(displayTutorialText);
+            Invoke("ShowTriggeredBigText", smallTextDelay);
         }
     }
 
@@ -75,7 +78,6 @@ public class DisplayText : MonoBehaviour
             tutorialText.text = message;
             tutorialText.gameObject.SetActive(true);
             canDismissTutorial = true;
-            Invoke(nameof(ShowBigText), smallTextDelay);
         }
     }
 
@@ -89,6 +91,12 @@ public class DisplayText : MonoBehaviour
             Invoke(nameof(HideBigText), bigTextDelay);
         }
     }
+
+    private void ShowTriggeredBigText()
+    {
+        ShowBigText(displayBigText);
+    }
+
 
     private void HideTutorialText()
     {
