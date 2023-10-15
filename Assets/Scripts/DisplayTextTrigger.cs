@@ -68,6 +68,12 @@ public class DisplayTextTrigger : MonoBehaviour
         {
             ShowTutorialText(displayTutorialText);
             Invoke("ShowTriggeredBigText", smallTextDelay);
+
+            // disable collider so this trigger doesn't get triggered again
+            GetComponent<Collider>().enabled = false;
+
+            // after 30 seconds destroy object after player triggers it
+            Destroy(gameObject, 30.0f);
         }
     }
 
