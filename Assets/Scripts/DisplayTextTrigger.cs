@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -6,11 +7,11 @@ using UnityEngine.Audio;
 public class DisplayTextTrigger : MonoBehaviour
 {
     [Header("Text")]
-    public string displayTutorialText = "testing 1 2 3";
-    public string displayBigText = "testing big";
+    public string displayTutorialText = "Enter tutorial text here";
+    public List<string> displayBigTexts = new List<string> { "Enter big text here" };
 
     [Header("Canvas References")]
-    public string canvasName = "YourCanvasName"; // may need to change this to gameobject reference
+    public GameObject canvas;
     public string tutorialTextName = "TutorialText";
     public string bigTextName = "BigText";
     private TextMeshProUGUI tutorialText;
@@ -24,18 +25,19 @@ public class DisplayTextTrigger : MonoBehaviour
     public List<KeyCode> dismissKeys = new List<KeyCode>();
 
     [Header("Text Delay")]
-    public float bigTextDelay = 1.5f;
-    public float smallTextDelay = 1.0f;
+    public float bigTextDelay; // default: 1f - time before the big text is hidden
+    public float bigTextInterval; // default: 0.2f - delay between each of the big text messages
+    public float smallTextDelay; // default: 1f - time before the small text is hidden
 
     private AudioSource audioSource;
     private bool canDismissTutorial = false;
+    private int currentBigTextIndex = 0;
 
     private void Start()
     {
-        // find TextMeshPro objects from the specified canvas
-        var canvas = GameObject.Find(canvasName);
-        tutorialText = canvas?.transform.Find(tutorialTextName)?.GetComponent<TextMeshProUGUI>();
-        bigText = canvas?.transform.Find(bigTextName)?.GetComponent<TextMeshProUGUI>();
+        // get TextMeshPro objects from canvas
+        tutorialText = canvas.transform.Find(tutorialTextName)?.GetComponent<TextMeshProUGUI>();
+        bigText = canvas.transform.Find(bigTextName)?.GetComponent<TextMeshProUGUI>();
 
         if (!audioSource)
         {
@@ -67,7 +69,8 @@ public class DisplayTextTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             ShowTutorialText(displayTutorialText);
-            Invoke("ShowTriggeredBigText", smallTextDelay);
+            if (displayBigTexts.Count > 0)
+                ShowNextBigText();
 
             // disable collider so this trigger doesn't get triggered again
             GetComponent<Collider>().enabled = false;
@@ -87,6 +90,15 @@ public class DisplayTextTrigger : MonoBehaviour
         }
     }
 
+    public void ShowNextBigText()
+    {
+        if (currentBigTextIndex < displayBigTexts.Count)
+        {
+            ShowBigText(displayBigTexts[currentBigTextIndex]);
+            currentBigTextIndex++;
+        }
+    }
+
     public void ShowBigText(string message)
     {
         if (bigText)
@@ -94,15 +106,15 @@ public class DisplayTextTrigger : MonoBehaviour
             bigText.text = message;
             bigText.gameObject.SetActive(true);
             audioSource.Play();
-            Invoke(nameof(HideBigText), bigTextDelay);
+            Invoke(nameof(HideBigTextAndQueueNext), bigTextDelay);
         }
     }
 
-    private void ShowTriggeredBigText()
+    private void HideBigTextAndQueueNext()
     {
-        ShowBigText(displayBigText);
+        HideBigText();
+        Invoke(nameof(ShowNextBigText), bigTextInterval);
     }
-
 
     private void HideTutorialText()
     {

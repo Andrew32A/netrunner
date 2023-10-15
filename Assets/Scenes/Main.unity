@@ -3882,8 +3882,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9100948321826060351, guid: e7f6d0832a2bb40f88d712fe99cebba5,
         type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1491029362}
+    - target: {fileID: 9100948321826060351, guid: e7f6d0832a2bb40f88d712fe99cebba5,
+        type: 3}
+      propertyPath: clickSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e2fbdc317bbf54ba0929cd34259a0c9c, type: 3}
+    - target: {fileID: 9100948321826060351, guid: e7f6d0832a2bb40f88d712fe99cebba5,
+        type: 3}
+      propertyPath: bigTextDelay
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9100948321826060351, guid: e7f6d0832a2bb40f88d712fe99cebba5,
+        type: 3}
       propertyPath: displayBigText
       value: KILL
+      objectReference: {fileID: 0}
+    - target: {fileID: 9100948321826060351, guid: e7f6d0832a2bb40f88d712fe99cebba5,
+        type: 3}
+      propertyPath: bigTextInterval
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 9100948321826060351, guid: e7f6d0832a2bb40f88d712fe99cebba5,
         type: 3}
@@ -3899,6 +3919,26 @@ PrefabInstance:
         type: 3}
       propertyPath: dismissKeys.Array.data[0]
       value: 114
+      objectReference: {fileID: 0}
+    - target: {fileID: 9100948321826060351, guid: e7f6d0832a2bb40f88d712fe99cebba5,
+        type: 3}
+      propertyPath: displayBigTexts.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9100948321826060351, guid: e7f6d0832a2bb40f88d712fe99cebba5,
+        type: 3}
+      propertyPath: displayBigTexts.Array.data[0]
+      value: KILL
+      objectReference: {fileID: 0}
+    - target: {fileID: 9100948321826060351, guid: e7f6d0832a2bb40f88d712fe99cebba5,
+        type: 3}
+      propertyPath: displayBigTexts.Array.data[1]
+      value: THEM
+      objectReference: {fileID: 0}
+    - target: {fileID: 9100948321826060351, guid: e7f6d0832a2bb40f88d712fe99cebba5,
+        type: 3}
+      propertyPath: displayBigTexts.Array.data[2]
+      value: ALL
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7f6d0832a2bb40f88d712fe99cebba5, type: 3}
