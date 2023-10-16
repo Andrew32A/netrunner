@@ -110,7 +110,7 @@ public class DisplayTextTrigger : MonoBehaviour
         }
         else
         {
-            Invoke(nameof(ShowTutorialText), 2.0f);
+            Invoke(nameof(ShowTutorialText), 0.5f);
         }
     }
 
