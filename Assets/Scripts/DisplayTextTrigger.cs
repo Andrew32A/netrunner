@@ -68,14 +68,21 @@ public class DisplayTextTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            // display big text first, if it doesn't exist, display tutorial text
             if (displayBigTexts.Count > 0)
+            {
                 ShowNextBigText();
+            }
+            else
+            {
+                ShowTutorialText();
+            }
 
             // disable collider so this trigger doesn't get triggered again
             GetComponent<Collider>().enabled = false;
 
-            // after 30 seconds destroy object after player triggers it
-            Destroy(gameObject, 30.0f);
+            // after 10 seconds destroy object after player triggers it
+            Destroy(gameObject, 10.0f);
         }
     }
 
@@ -101,11 +108,12 @@ public class DisplayTextTrigger : MonoBehaviour
             ShowBigText(displayBigTexts[currentBigTextIndex]);
             currentBigTextIndex++;
         }
+        else
         {
-            // display tutorial text 2 seconds after all big texts have been shown
             Invoke(nameof(ShowTutorialText), 2.0f);
         }
     }
+
 
     public void ShowBigText(string message)
     {
