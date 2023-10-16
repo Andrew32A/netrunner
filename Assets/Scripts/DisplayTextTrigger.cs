@@ -58,6 +58,9 @@ public class DisplayTextTrigger : MonoBehaviour
                 {
                     HideTutorialTextAfterDelay(smallTextDismissDelay);
                     canDismissTutorial = false;
+
+                    // cleanup - after 10 seconds destroy object after player triggers and hits the right tutorial button
+                    Destroy(gameObject, 10.0f);
                     break;
                 }
             }
@@ -80,9 +83,6 @@ public class DisplayTextTrigger : MonoBehaviour
 
             // disable collider so this trigger doesn't get triggered again
             GetComponent<Collider>().enabled = false;
-
-            // after 10 seconds destroy object after player triggers it
-            Destroy(gameObject, 10.0f);
         }
     }
 
