@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5712204, g: 0.4212163, b: 0.68304557, a: 1}
+  m_IndirectSpecularColor: {r: 0.49560678, g: 0.3651479, b: 0.59291863, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -37574,7 +37574,7 @@ PrefabInstance:
     - target: {fileID: 949918783720195501, guid: ef7ba469030654214b92e42cc9a77497,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 118
+      value: 80.84488
       objectReference: {fileID: 0}
     - target: {fileID: 949918783720195501, guid: ef7ba469030654214b92e42cc9a77497,
         type: 3}
@@ -37626,6 +37626,11 @@ PrefabInstance:
       propertyPath: playerPistol
       value: 
       objectReference: {fileID: 346676909}
+    - target: {fileID: 4501734993006611548, guid: ef7ba469030654214b92e42cc9a77497,
+        type: 3}
+      propertyPath: m_Range
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef7ba469030654214b92e42cc9a77497, type: 3}
 --- !u!1 &1058677051
@@ -57166,7 +57171,7 @@ PrefabInstance:
     - target: {fileID: 9100948321826060350, guid: e7f6d0832a2bb40f88d712fe99cebba5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 85.490005
+      value: 48.49
       objectReference: {fileID: 0}
     - target: {fileID: 9100948321826060350, guid: e7f6d0832a2bb40f88d712fe99cebba5,
         type: 3}
