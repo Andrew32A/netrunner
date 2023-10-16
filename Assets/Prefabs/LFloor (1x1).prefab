@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 1938119070889315168}
   - component: {fileID: 1938119070909709612}
   m_Layer: 9
-  m_Name: LFloor(1x1)
+  m_Name: LFloor (1x1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -114,7 +114,6 @@ public class DisplayTextTrigger : MonoBehaviour
         }
     }
 
-
     public void ShowBigText(string message)
     {
         if (bigText)
