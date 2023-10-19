@@ -10,7 +10,7 @@
 
 ## How to Play
 
-### Download
+### Download/Demo
 
 - Currently available on Windows/MacOS/Linux; Download link available soon
 - Experimental WebGL build available [here](http://andrew-alsing.me/netrunner-webgl/)
