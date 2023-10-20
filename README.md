@@ -6,7 +6,7 @@
 
 ## Description
 
-3D Unity game made in 1 week! This game is a movement based FPS game inspired by games like Titanfall, Carlson, and Super Hot.
+3D Unity game made in 1 week! This game is a movement based FPS game inspired by games like Titanfall, Carlson, Ghostrunner and Super Hot.
 
 ## How to Play
 
